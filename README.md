@@ -1,11 +1,11 @@
 # parrygg-python
 
-Python gRPC client library for the parry.gg tournament platform API.
+The official Python client library for the parry.gg tournament platform API. This library provides easy access to all parry.gg services using gRPC, allowing you to build applications that interact with tournaments, events, brackets, users, and more.
 
 ## Installation
 
 ```bash
-pip install -e .
+pip install parrygg
 ```
 
 ## Requirements
@@ -17,28 +17,7 @@ pip install -e .
 
 ## Usage
 
-### Basic Example
-
-```python
-import grpc
-from parrygg.services.tournament_service_pb2_grpc import TournamentServiceStub
-from parrygg.services.tournament_service_pb2 import GetTournamentsRequest
-
-# Create a secure gRPC channel
-channel = grpc.secure_channel("api.parry.gg:443", grpc.ssl_channel_credentials())
-
-# Create a tournament service stub
-tournament_service = TournamentServiceStub(channel)
-
-# Make a request
-request = GetTournamentsRequest()
-response = tournament_service.GetTournaments(request)
-
-print(f"Found {len(response.tournaments)} tournaments")
-channel.close()
-```
-
-### Authentication with API Key
+### Example
 
 For authenticated requests, include your API key in the `X-API-KEY` header:
 
@@ -47,19 +26,15 @@ import grpc
 from parrygg.services.tournament_service_pb2_grpc import TournamentServiceStub
 from parrygg.services.tournament_service_pb2 import GetTournamentsRequest
 
-# Your API key from developer.parry.gg
+# Your API key from parry.gg
 API_KEY = "your-api-key-here"
 
-# Create a secure gRPC channel
 channel = grpc.secure_channel("api.parry.gg:443", grpc.ssl_channel_credentials())
 
-# Create a tournament service stub
 tournament_service = TournamentServiceStub(channel)
 
-# Create metadata with API key
 metadata = [("x-api-key", API_KEY)]
 
-# Make an authenticated request
 request = GetTournamentsRequest()
 response = tournament_service.GetTournaments(request, metadata=metadata)
 
@@ -85,29 +60,6 @@ The library provides access to all parry.gg API services:
 - **NotificationService** - Notification operations
 - **MatchService** - Individual match operations
 - **PageContentService** - Content management
-
-## Development
-
-### Regenerating Client Code
-
-To regenerate the client code from proto files:
-
-```bash
-python generate_client.py
-```
-
-This script:
-1. Generates Python code from the proto files using `protoc`
-2. Automatically fixes import paths using `protoletariat`
-3. Creates necessary `__init__.py` files
-
-### Testing
-
-Run the test script to verify the client works:
-
-```bash
-python test_project.py
-```
 
 ## Documentation
 
