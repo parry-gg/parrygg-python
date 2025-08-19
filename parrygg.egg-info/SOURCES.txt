@@ -1,0 +1,10 @@
+LICENSE
+pyproject.toml
+setup.py
+parrygg/__init__.py
+parrygg.egg-info/PKG-INFO
+parrygg.egg-info/SOURCES.txt
+parrygg.egg-info/dependency_links.txt
+parrygg.egg-info/requires.txt
+parrygg.egg-info/top_level.txt
+parrygg/generated/__init__.py

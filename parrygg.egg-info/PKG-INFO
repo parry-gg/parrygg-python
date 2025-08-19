@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: parrygg
+Version: 0.1.0
+Summary: Python gRPC client for parry.gg API
+Author-email: "parry.gg" <support@parry.gg>
+License: MIT
+Project-URL: Homepage, https://github.com/parrygg/parrygg-python
+Project-URL: Repository, https://github.com/parrygg/parrygg-python
+Project-URL: Issues, https://github.com/parrygg/parrygg-python/issues
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: grpcio>=1.50.0
+Requires-Dist: grpcio-tools>=1.50.0
+Requires-Dist: protobuf>=4.21.0
+Provides-Extra: dev
+Requires-Dist: build>=0.10.0; extra == "dev"
+Requires-Dist: twine>=4.0.0; extra == "dev"
