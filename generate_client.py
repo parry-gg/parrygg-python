@@ -2,6 +2,7 @@
 """Generate gRPC client code from proto files for development"""
 
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -11,13 +12,7 @@ def main():
     """Generate gRPC client code from proto files"""
     script_dir = Path(__file__).parent
     proto_dir = script_dir / "protos" / "src"
-    output_dir = script_dir / "parrygg" / "generated"
-    
-    # Create output directory
-    output_dir.mkdir(exist_ok=True)
-    
-    # Create __init__.py in generated directory
-    (output_dir / "__init__.py").touch()
+    output_dir = script_dir / "parrygg"
     
     # Find all proto files
     proto_files = []
@@ -30,7 +25,7 @@ def main():
         print("No proto files found in", proto_dir)
         return 1
     
-    # Generate Python code
+    # Generate Python code directly to parrygg directory
     cmd = [
         sys.executable, "-m", "grpc_tools.protoc",
         f"--proto_path={proto_dir}",
@@ -44,6 +39,17 @@ def main():
     
     try:
         subprocess.run(cmd, check=True)
+        
+        # Create __init__.py files where needed
+        services_dir = output_dir / "services"
+        models_dir = output_dir / "models"
+        
+        if services_dir.exists():
+            (services_dir / "__init__.py").write_text('"""gRPC services for parry.gg API"""\n')
+        
+        if models_dir.exists():
+            (models_dir / "__init__.py").write_text('"""Protocol buffer models for parry.gg API"""\n')
+        
         print(f"Successfully generated client code in {output_dir}")
         return 0
     except subprocess.CalledProcessError as e:
