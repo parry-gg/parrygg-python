@@ -1,0 +1,3 @@
+[submodule "protos"]
+	path = protos
+	url = https://grantismo@github.com/parry-gg/protos.git
