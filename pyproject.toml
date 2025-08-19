@@ -9,7 +9,7 @@ description = "Python gRPC client for parry.gg API"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "parry.gg", email = "support@parry.gg"}
+    {name = "parry.gg", email = "contact@parry.gg"}
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",

@@ -50,6 +50,24 @@ def main():
         if models_dir.exists():
             (models_dir / "__init__.py").write_text('"""Protocol buffer models for parry.gg API"""\n')
         
+        # Fix imports using protoletariat
+        print("Fixing import paths with protoletariat...")
+        protol_cmd = [
+            "protol",
+            "--python-out", str(output_dir),
+            "--in-place",
+            "protoc",
+            "--proto-path", str(proto_dir)
+        ]
+        protol_cmd.extend(proto_files)
+        
+        try:
+            subprocess.run(protol_cmd, check=True)
+            print("Successfully fixed import paths")
+        except subprocess.CalledProcessError as e:
+            print(f"Warning: Failed to fix imports with protoletariat: {e}")
+            print("Generated code may have import issues")
+        
         print(f"Successfully generated client code in {output_dir}")
         return 0
     except subprocess.CalledProcessError as e:
