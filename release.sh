@@ -33,6 +33,6 @@ echo "Building package..."
 python3 -m build
 
 echo "Publishing to PyPI..."
-python3 -m twine upload dist/*
+python3 -m twine upload parrygg/*
 
 echo "Release $NEW_VERSION complete!"
