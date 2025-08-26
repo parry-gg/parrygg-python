@@ -7,7 +7,7 @@ name = "parrygg"
 version = "0.1.1"
 description = "Python gRPC client for parry.gg API"
 readme = "README.md"
-license = {text = "MIT"}
+license = { file = "LICENSE" }
 authors = [
     {name = "parry.gg", email = "contact@parry.gg"}
 ]
