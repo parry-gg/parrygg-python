@@ -37,9 +37,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/parrygg/parrygg-python"
-Repository = "https://github.com/parrygg/parrygg-python"
-Issues = "https://github.com/parrygg/parrygg-python/issues"
+Homepage = "https://github.com/parry-gg/parrygg-python"
+Repository = "https://github.com/parry-gg/parrygg-python"
+Issues = "https://github.com/parry-gg/parrygg-python/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
