@@ -22,6 +22,7 @@ class HierarchyServiceStub(object):
         self.GetEventHierarchy = channel.unary_unary('/parrygg.services.HierarchyService/GetEventHierarchy', request_serializer=services_dot_hierarchy__service__pb2.GetEventHierarchyRequest.SerializeToString, response_deserializer=services_dot_hierarchy__service__pb2.GetEventHierarchyResponse.FromString, _registered_method=True)
         self.GetPhaseHierarchy = channel.unary_unary('/parrygg.services.HierarchyService/GetPhaseHierarchy', request_serializer=services_dot_hierarchy__service__pb2.GetPhaseHierarchyRequest.SerializeToString, response_deserializer=services_dot_hierarchy__service__pb2.GetPhaseHierarchyResponse.FromString, _registered_method=True)
         self.GetBracketHierarchy = channel.unary_unary('/parrygg.services.HierarchyService/GetBracketHierarchy', request_serializer=services_dot_hierarchy__service__pb2.GetBracketHierarchyRequest.SerializeToString, response_deserializer=services_dot_hierarchy__service__pb2.GetBracketHierarchyResponse.FromString, _registered_method=True)
+        self.GetAllBracketHierarchies = channel.unary_unary('/parrygg.services.HierarchyService/GetAllBracketHierarchies', request_serializer=services_dot_hierarchy__service__pb2.GetAllBracketHierarchiesRequest.SerializeToString, response_deserializer=services_dot_hierarchy__service__pb2.GetAllBracketHierarchiesResponse.FromString, _registered_method=True)
 
 class HierarchyServiceServicer(object):
     'Missing associated documentation comment in .proto file.'
@@ -44,8 +45,14 @@ class HierarchyServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetAllBracketHierarchies(self, request, context):
+        'Retrieves the hierarchy structures to access all brackets within an event.\n        '
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 def add_HierarchyServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {'GetEventHierarchy': grpc.unary_unary_rpc_method_handler(servicer.GetEventHierarchy, request_deserializer=services_dot_hierarchy__service__pb2.GetEventHierarchyRequest.FromString, response_serializer=services_dot_hierarchy__service__pb2.GetEventHierarchyResponse.SerializeToString), 'GetPhaseHierarchy': grpc.unary_unary_rpc_method_handler(servicer.GetPhaseHierarchy, request_deserializer=services_dot_hierarchy__service__pb2.GetPhaseHierarchyRequest.FromString, response_serializer=services_dot_hierarchy__service__pb2.GetPhaseHierarchyResponse.SerializeToString), 'GetBracketHierarchy': grpc.unary_unary_rpc_method_handler(servicer.GetBracketHierarchy, request_deserializer=services_dot_hierarchy__service__pb2.GetBracketHierarchyRequest.FromString, response_serializer=services_dot_hierarchy__service__pb2.GetBracketHierarchyResponse.SerializeToString)}
+    rpc_method_handlers = {'GetEventHierarchy': grpc.unary_unary_rpc_method_handler(servicer.GetEventHierarchy, request_deserializer=services_dot_hierarchy__service__pb2.GetEventHierarchyRequest.FromString, response_serializer=services_dot_hierarchy__service__pb2.GetEventHierarchyResponse.SerializeToString), 'GetPhaseHierarchy': grpc.unary_unary_rpc_method_handler(servicer.GetPhaseHierarchy, request_deserializer=services_dot_hierarchy__service__pb2.GetPhaseHierarchyRequest.FromString, response_serializer=services_dot_hierarchy__service__pb2.GetPhaseHierarchyResponse.SerializeToString), 'GetBracketHierarchy': grpc.unary_unary_rpc_method_handler(servicer.GetBracketHierarchy, request_deserializer=services_dot_hierarchy__service__pb2.GetBracketHierarchyRequest.FromString, response_serializer=services_dot_hierarchy__service__pb2.GetBracketHierarchyResponse.SerializeToString), 'GetAllBracketHierarchies': grpc.unary_unary_rpc_method_handler(servicer.GetAllBracketHierarchies, request_deserializer=services_dot_hierarchy__service__pb2.GetAllBracketHierarchiesRequest.FromString, response_serializer=services_dot_hierarchy__service__pb2.GetAllBracketHierarchiesResponse.SerializeToString)}
     generic_handler = grpc.method_handlers_generic_handler('parrygg.services.HierarchyService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
     server.add_registered_method_handlers('parrygg.services.HierarchyService', rpc_method_handlers)
@@ -64,3 +71,7 @@ class HierarchyService(object):
     @staticmethod
     def GetBracketHierarchy(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
         return grpc.experimental.unary_unary(request, target, '/parrygg.services.HierarchyService/GetBracketHierarchy', services_dot_hierarchy__service__pb2.GetBracketHierarchyRequest.SerializeToString, services_dot_hierarchy__service__pb2.GetBracketHierarchyResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)
+
+    @staticmethod
+    def GetAllBracketHierarchies(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/parrygg.services.HierarchyService/GetAllBracketHierarchies', services_dot_hierarchy__service__pb2.GetAllBracketHierarchiesRequest.SerializeToString, services_dot_hierarchy__service__pb2.GetAllBracketHierarchiesResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)

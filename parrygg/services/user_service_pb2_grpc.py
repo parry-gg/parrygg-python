@@ -22,6 +22,7 @@ class UserServiceStub(object):
         self.GetUser = channel.unary_unary('/parrygg.services.UserService/GetUser', request_serializer=services_dot_user__service__pb2.GetUserRequest.SerializeToString, response_deserializer=services_dot_user__service__pb2.GetUserResponse.FromString, _registered_method=True)
         self.GetUsers = channel.unary_unary('/parrygg.services.UserService/GetUsers', request_serializer=services_dot_user__service__pb2.GetUsersRequest.SerializeToString, response_deserializer=services_dot_user__service__pb2.GetUsersResponse.FromString, _registered_method=True)
         self.UpdateUser = channel.unary_unary('/parrygg.services.UserService/UpdateUser', request_serializer=services_dot_user__service__pb2.UpdateUserRequest.SerializeToString, response_deserializer=services_dot_user__service__pb2.UpdateUserResponse.FromString, _registered_method=True)
+        self.GetUserPlacements = channel.unary_unary('/parrygg.services.UserService/GetUserPlacements', request_serializer=services_dot_user__service__pb2.GetUserPlacementsRequest.SerializeToString, response_deserializer=services_dot_user__service__pb2.GetUserPlacementsResponse.FromString, _registered_method=True)
 
 class UserServiceServicer(object):
     'Missing associated documentation comment in .proto file.'
@@ -44,8 +45,14 @@ class UserServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetUserPlacements(self, request, context):
+        "Retrieves a user's recent placement data\n        "
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 def add_UserServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {'GetUser': grpc.unary_unary_rpc_method_handler(servicer.GetUser, request_deserializer=services_dot_user__service__pb2.GetUserRequest.FromString, response_serializer=services_dot_user__service__pb2.GetUserResponse.SerializeToString), 'GetUsers': grpc.unary_unary_rpc_method_handler(servicer.GetUsers, request_deserializer=services_dot_user__service__pb2.GetUsersRequest.FromString, response_serializer=services_dot_user__service__pb2.GetUsersResponse.SerializeToString), 'UpdateUser': grpc.unary_unary_rpc_method_handler(servicer.UpdateUser, request_deserializer=services_dot_user__service__pb2.UpdateUserRequest.FromString, response_serializer=services_dot_user__service__pb2.UpdateUserResponse.SerializeToString)}
+    rpc_method_handlers = {'GetUser': grpc.unary_unary_rpc_method_handler(servicer.GetUser, request_deserializer=services_dot_user__service__pb2.GetUserRequest.FromString, response_serializer=services_dot_user__service__pb2.GetUserResponse.SerializeToString), 'GetUsers': grpc.unary_unary_rpc_method_handler(servicer.GetUsers, request_deserializer=services_dot_user__service__pb2.GetUsersRequest.FromString, response_serializer=services_dot_user__service__pb2.GetUsersResponse.SerializeToString), 'UpdateUser': grpc.unary_unary_rpc_method_handler(servicer.UpdateUser, request_deserializer=services_dot_user__service__pb2.UpdateUserRequest.FromString, response_serializer=services_dot_user__service__pb2.UpdateUserResponse.SerializeToString), 'GetUserPlacements': grpc.unary_unary_rpc_method_handler(servicer.GetUserPlacements, request_deserializer=services_dot_user__service__pb2.GetUserPlacementsRequest.FromString, response_serializer=services_dot_user__service__pb2.GetUserPlacementsResponse.SerializeToString)}
     generic_handler = grpc.method_handlers_generic_handler('parrygg.services.UserService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
     server.add_registered_method_handlers('parrygg.services.UserService', rpc_method_handlers)
@@ -64,3 +71,7 @@ class UserService(object):
     @staticmethod
     def UpdateUser(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
         return grpc.experimental.unary_unary(request, target, '/parrygg.services.UserService/UpdateUser', services_dot_user__service__pb2.UpdateUserRequest.SerializeToString, services_dot_user__service__pb2.UpdateUserResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)
+
+    @staticmethod
+    def GetUserPlacements(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/parrygg.services.UserService/GetUserPlacements', services_dot_user__service__pb2.GetUserPlacementsRequest.SerializeToString, services_dot_user__service__pb2.GetUserPlacementsResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)
