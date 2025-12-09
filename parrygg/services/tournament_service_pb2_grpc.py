@@ -23,6 +23,7 @@ class TournamentServiceStub(object):
         self.GetTournaments = channel.unary_unary('/parrygg.services.TournamentService/GetTournaments', request_serializer=services_dot_tournament__service__pb2.GetTournamentsRequest.SerializeToString, response_deserializer=services_dot_tournament__service__pb2.GetTournamentsResponse.FromString, _registered_method=True)
         self.GetTournamentAttendees = channel.unary_unary('/parrygg.services.TournamentService/GetTournamentAttendees', request_serializer=services_dot_tournament__service__pb2.GetTournamentAttendeesRequest.SerializeToString, response_deserializer=services_dot_tournament__service__pb2.GetTournamentAttendeesResponse.FromString, _registered_method=True)
         self.UpdateTournament = channel.unary_unary('/parrygg.services.TournamentService/UpdateTournament', request_serializer=services_dot_tournament__service__pb2.UpdateTournamentRequest.SerializeToString, response_deserializer=services_dot_tournament__service__pb2.UpdateTournamentResponse.FromString, _registered_method=True)
+        self.GetTournamentAdmins = channel.unary_unary('/parrygg.services.TournamentService/GetTournamentAdmins', request_serializer=services_dot_tournament__service__pb2.GetTournamentAdminsRequest.SerializeToString, response_deserializer=services_dot_tournament__service__pb2.GetTournamentAdminsResponse.FromString, _registered_method=True)
 
 class TournamentServiceServicer(object):
     'Missing associated documentation comment in .proto file.'
@@ -51,8 +52,14 @@ class TournamentServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetTournamentAdmins(self, request, context):
+        'Retrieves administrators for a tournament with optional permission filtering.\n        '
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 def add_TournamentServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {'GetTournament': grpc.unary_unary_rpc_method_handler(servicer.GetTournament, request_deserializer=services_dot_tournament__service__pb2.GetTournamentRequest.FromString, response_serializer=services_dot_tournament__service__pb2.GetTournamentResponse.SerializeToString), 'GetTournaments': grpc.unary_unary_rpc_method_handler(servicer.GetTournaments, request_deserializer=services_dot_tournament__service__pb2.GetTournamentsRequest.FromString, response_serializer=services_dot_tournament__service__pb2.GetTournamentsResponse.SerializeToString), 'GetTournamentAttendees': grpc.unary_unary_rpc_method_handler(servicer.GetTournamentAttendees, request_deserializer=services_dot_tournament__service__pb2.GetTournamentAttendeesRequest.FromString, response_serializer=services_dot_tournament__service__pb2.GetTournamentAttendeesResponse.SerializeToString), 'UpdateTournament': grpc.unary_unary_rpc_method_handler(servicer.UpdateTournament, request_deserializer=services_dot_tournament__service__pb2.UpdateTournamentRequest.FromString, response_serializer=services_dot_tournament__service__pb2.UpdateTournamentResponse.SerializeToString)}
+    rpc_method_handlers = {'GetTournament': grpc.unary_unary_rpc_method_handler(servicer.GetTournament, request_deserializer=services_dot_tournament__service__pb2.GetTournamentRequest.FromString, response_serializer=services_dot_tournament__service__pb2.GetTournamentResponse.SerializeToString), 'GetTournaments': grpc.unary_unary_rpc_method_handler(servicer.GetTournaments, request_deserializer=services_dot_tournament__service__pb2.GetTournamentsRequest.FromString, response_serializer=services_dot_tournament__service__pb2.GetTournamentsResponse.SerializeToString), 'GetTournamentAttendees': grpc.unary_unary_rpc_method_handler(servicer.GetTournamentAttendees, request_deserializer=services_dot_tournament__service__pb2.GetTournamentAttendeesRequest.FromString, response_serializer=services_dot_tournament__service__pb2.GetTournamentAttendeesResponse.SerializeToString), 'UpdateTournament': grpc.unary_unary_rpc_method_handler(servicer.UpdateTournament, request_deserializer=services_dot_tournament__service__pb2.UpdateTournamentRequest.FromString, response_serializer=services_dot_tournament__service__pb2.UpdateTournamentResponse.SerializeToString), 'GetTournamentAdmins': grpc.unary_unary_rpc_method_handler(servicer.GetTournamentAdmins, request_deserializer=services_dot_tournament__service__pb2.GetTournamentAdminsRequest.FromString, response_serializer=services_dot_tournament__service__pb2.GetTournamentAdminsResponse.SerializeToString)}
     generic_handler = grpc.method_handlers_generic_handler('parrygg.services.TournamentService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
     server.add_registered_method_handlers('parrygg.services.TournamentService', rpc_method_handlers)
@@ -75,3 +82,7 @@ class TournamentService(object):
     @staticmethod
     def UpdateTournament(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
         return grpc.experimental.unary_unary(request, target, '/parrygg.services.TournamentService/UpdateTournament', services_dot_tournament__service__pb2.UpdateTournamentRequest.SerializeToString, services_dot_tournament__service__pb2.UpdateTournamentResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)
+
+    @staticmethod
+    def GetTournamentAdmins(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/parrygg.services.TournamentService/GetTournamentAdmins', services_dot_tournament__service__pb2.GetTournamentAdminsRequest.SerializeToString, services_dot_tournament__service__pb2.GetTournamentAdminsResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)

@@ -20,6 +20,7 @@ class GameServiceStub(object):
     def __init__(self, channel):
         'Constructor.\n\n        Args:\n            channel: A grpc.Channel.\n        '
         self.GetGames = channel.unary_unary('/parrygg.services.GameService/GetGames', request_serializer=services_dot_game__service__pb2.GetGamesRequest.SerializeToString, response_deserializer=services_dot_game__service__pb2.GetGamesResponse.FromString, _registered_method=True)
+        self.GetGame = channel.unary_unary('/parrygg.services.GameService/GetGame', request_serializer=services_dot_game__service__pb2.GetGameRequest.SerializeToString, response_deserializer=services_dot_game__service__pb2.GetGameResponse.FromString, _registered_method=True)
 
 class GameServiceServicer(object):
     'GameService provides game management operations.\n    Handles game metadata, creation, and external database integration.\n    '
@@ -30,8 +31,14 @@ class GameServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetGame(self, request, context):
+        'Retrieve a single game with all characters and stages populated.\n        '
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 def add_GameServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {'GetGames': grpc.unary_unary_rpc_method_handler(servicer.GetGames, request_deserializer=services_dot_game__service__pb2.GetGamesRequest.FromString, response_serializer=services_dot_game__service__pb2.GetGamesResponse.SerializeToString)}
+    rpc_method_handlers = {'GetGames': grpc.unary_unary_rpc_method_handler(servicer.GetGames, request_deserializer=services_dot_game__service__pb2.GetGamesRequest.FromString, response_serializer=services_dot_game__service__pb2.GetGamesResponse.SerializeToString), 'GetGame': grpc.unary_unary_rpc_method_handler(servicer.GetGame, request_deserializer=services_dot_game__service__pb2.GetGameRequest.FromString, response_serializer=services_dot_game__service__pb2.GetGameResponse.SerializeToString)}
     generic_handler = grpc.method_handlers_generic_handler('parrygg.services.GameService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
     server.add_registered_method_handlers('parrygg.services.GameService', rpc_method_handlers)
@@ -42,3 +49,7 @@ class GameService(object):
     @staticmethod
     def GetGames(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
         return grpc.experimental.unary_unary(request, target, '/parrygg.services.GameService/GetGames', services_dot_game__service__pb2.GetGamesRequest.SerializeToString, services_dot_game__service__pb2.GetGamesResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)
+
+    @staticmethod
+    def GetGame(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/parrygg.services.GameService/GetGame', services_dot_game__service__pb2.GetGameRequest.SerializeToString, services_dot_game__service__pb2.GetGameResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)

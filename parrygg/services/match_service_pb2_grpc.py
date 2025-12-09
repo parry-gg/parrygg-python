@@ -20,6 +20,7 @@ class MatchServiceStub(object):
     def __init__(self, channel):
         'Constructor.\n\n        Args:\n            channel: A grpc.Channel.\n        '
         self.GetMatch = channel.unary_unary('/parrygg.services.MatchService/GetMatch', request_serializer=services_dot_match__service__pb2.GetMatchRequest.SerializeToString, response_deserializer=services_dot_match__service__pb2.GetMatchResponse.FromString, _registered_method=True)
+        self.GetMatches = channel.unary_unary('/parrygg.services.MatchService/GetMatches', request_serializer=services_dot_match__service__pb2.GetMatchesRequest.SerializeToString, response_deserializer=services_dot_match__service__pb2.GetMatchesResponse.FromString, _registered_method=True)
         self.SetMatchResult = channel.unary_unary('/parrygg.services.MatchService/SetMatchResult', request_serializer=services_dot_match__service__pb2.SetMatchResultRequest.SerializeToString, response_deserializer=services_dot_match__service__pb2.SetMatchResultResponse.FromString, _registered_method=True)
         self.StartMatch = channel.unary_unary('/parrygg.services.MatchService/StartMatch', request_serializer=services_dot_match__service__pb2.StartMatchRequest.SerializeToString, response_deserializer=services_dot_match__service__pb2.StartMatchResponse.FromString, _registered_method=True)
         self.ResetMatch = channel.unary_unary('/parrygg.services.MatchService/ResetMatch', request_serializer=services_dot_match__service__pb2.ResetMatchRequest.SerializeToString, response_deserializer=services_dot_match__service__pb2.ResetMatchResponse.FromString, _registered_method=True)
@@ -29,6 +30,12 @@ class MatchServiceServicer(object):
 
     def GetMatch(self, request, context):
         'Retrieve a specific match by ID.\n        '
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetMatches(self, request, context):
+        'Retrieve multiple matches based on filter criteria.\n        '
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -52,7 +59,7 @@ class MatchServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 def add_MatchServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {'GetMatch': grpc.unary_unary_rpc_method_handler(servicer.GetMatch, request_deserializer=services_dot_match__service__pb2.GetMatchRequest.FromString, response_serializer=services_dot_match__service__pb2.GetMatchResponse.SerializeToString), 'SetMatchResult': grpc.unary_unary_rpc_method_handler(servicer.SetMatchResult, request_deserializer=services_dot_match__service__pb2.SetMatchResultRequest.FromString, response_serializer=services_dot_match__service__pb2.SetMatchResultResponse.SerializeToString), 'StartMatch': grpc.unary_unary_rpc_method_handler(servicer.StartMatch, request_deserializer=services_dot_match__service__pb2.StartMatchRequest.FromString, response_serializer=services_dot_match__service__pb2.StartMatchResponse.SerializeToString), 'ResetMatch': grpc.unary_unary_rpc_method_handler(servicer.ResetMatch, request_deserializer=services_dot_match__service__pb2.ResetMatchRequest.FromString, response_serializer=services_dot_match__service__pb2.ResetMatchResponse.SerializeToString)}
+    rpc_method_handlers = {'GetMatch': grpc.unary_unary_rpc_method_handler(servicer.GetMatch, request_deserializer=services_dot_match__service__pb2.GetMatchRequest.FromString, response_serializer=services_dot_match__service__pb2.GetMatchResponse.SerializeToString), 'GetMatches': grpc.unary_unary_rpc_method_handler(servicer.GetMatches, request_deserializer=services_dot_match__service__pb2.GetMatchesRequest.FromString, response_serializer=services_dot_match__service__pb2.GetMatchesResponse.SerializeToString), 'SetMatchResult': grpc.unary_unary_rpc_method_handler(servicer.SetMatchResult, request_deserializer=services_dot_match__service__pb2.SetMatchResultRequest.FromString, response_serializer=services_dot_match__service__pb2.SetMatchResultResponse.SerializeToString), 'StartMatch': grpc.unary_unary_rpc_method_handler(servicer.StartMatch, request_deserializer=services_dot_match__service__pb2.StartMatchRequest.FromString, response_serializer=services_dot_match__service__pb2.StartMatchResponse.SerializeToString), 'ResetMatch': grpc.unary_unary_rpc_method_handler(servicer.ResetMatch, request_deserializer=services_dot_match__service__pb2.ResetMatchRequest.FromString, response_serializer=services_dot_match__service__pb2.ResetMatchResponse.SerializeToString)}
     generic_handler = grpc.method_handlers_generic_handler('parrygg.services.MatchService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
     server.add_registered_method_handlers('parrygg.services.MatchService', rpc_method_handlers)
@@ -63,6 +70,10 @@ class MatchService(object):
     @staticmethod
     def GetMatch(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
         return grpc.experimental.unary_unary(request, target, '/parrygg.services.MatchService/GetMatch', services_dot_match__service__pb2.GetMatchRequest.SerializeToString, services_dot_match__service__pb2.GetMatchResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)
+
+    @staticmethod
+    def GetMatches(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/parrygg.services.MatchService/GetMatches', services_dot_match__service__pb2.GetMatchesRequest.SerializeToString, services_dot_match__service__pb2.GetMatchesResponse.FromString, options, channel_credentials, insecure, call_credentials, compression, wait_for_ready, timeout, metadata, _registered_method=True)
 
     @staticmethod
     def SetMatchResult(request, target, options=(), channel_credentials=None, call_credentials=None, insecure=False, compression=None, wait_for_ready=None, timeout=None, metadata=None):
