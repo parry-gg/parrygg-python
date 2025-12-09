@@ -3,6 +3,10 @@ set -e
 
 echo "Starting release process..."
 
+# Update protos submodule to latest
+echo "Updating protos submodule to latest version..."
+git submodule update --init --remote protos
+
 # Generate latest client code
 echo "Generating client code..."
 python3 generate_client.py
