@@ -3,6 +3,9 @@ set -e
 
 echo "Starting release process..."
 
+# Ensure publishing tools are installed (declared in pyproject.toml [project.optional-dependencies].dev)
+python3 -m pip install --quiet --upgrade build twine
+
 echo "Answer 'y' to cut a new release: regenerate client, bump version, tag, and publish."
 echo "Answer 'n' to retry PyPI upload of the current version (after a failed twine upload)."
 read -p "Cut a new release? [y/N] " -n 1 -r
@@ -15,6 +18,9 @@ else
 fi
 
 if [ "$CUT_RELEASE" -eq 1 ]; then
+    # Ensure codegen tools are installed
+    python3 -m pip install --quiet --upgrade grpcio-tools protoletariat
+
     # Update protos submodule to latest
     echo "Updating protos submodule to latest version..."
     git submodule update --init --remote protos

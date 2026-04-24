@@ -1,3 +1,3 @@
 """parrygg - Python gRPC client for parry.gg API"""
 
-__version__ = "0.1.2"
+__version__ = "0.1.5"
