@@ -2,7 +2,7 @@
 import grpc
 import warnings
 from ..services import game_service_pb2 as services_dot_game__service__pb2
-GRPC_GENERATED_VERSION = '1.76.0'
+GRPC_GENERATED_VERSION = '1.71.2'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 try:
@@ -11,7 +11,7 @@ try:
 except ImportError:
     _version_not_supported = True
 if _version_not_supported:
-    raise RuntimeError(f'The grpc package installed is at version {GRPC_VERSION},' + ' but the generated code in services/game_service_pb2_grpc.py depends on' + f' grpcio>={GRPC_GENERATED_VERSION}.' + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}' + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.')
+    raise RuntimeError(f'The grpc package installed is at version {GRPC_VERSION},' + f' but the generated code in services/game_service_pb2_grpc.py depends on' + f' grpcio>={GRPC_GENERATED_VERSION}.' + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}' + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.')
 
 class GameServiceStub(object):
     """GameService provides game management operations.

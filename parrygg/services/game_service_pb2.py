@@ -4,7 +4,7 @@ from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import runtime_version as _runtime_version
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
-_runtime_version.ValidateProtobufRuntimeVersion(_runtime_version.Domain.PUBLIC, 6, 31, 1, '', 'services/game_service.proto')
+_runtime_version.ValidateProtobufRuntimeVersion(_runtime_version.Domain.PUBLIC, 5, 29, 0, '', 'services/game_service.proto')
 _sym_db = _symbol_database.Default()
 from ..models import game_pb2 as models_dot_game__pb2
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bservices/game_service.proto\x12\x10parrygg.services\x1a\x11models/game.proto"\x11\n\x0fGetGamesRequest"7\n\x10GetGamesResponse\x12#\n\x05games\x18\x01 \x03(\x0b2\x14.parrygg.models.Game"!\n\x0eGetGameRequest\x12\x0f\n\x07game_id\x18\x01 \x01(\t"5\n\x0fGetGameResponse\x12"\n\x04game\x18\x01 \x01(\x0b2\x14.parrygg.models.Game2\xb4\x01\n\x0bGameService\x12S\n\x08GetGames\x12!.parrygg.services.GetGamesRequest\x1a".parrygg.services.GetGamesResponse"\x00\x12P\n\x07GetGame\x12 .parrygg.services.GetGameRequest\x1a!.parrygg.services.GetGameResponse"\x00B\x1a\n\x16gg.parry.grpc.servicesP\x01b\x06proto3')
