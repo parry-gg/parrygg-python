@@ -21,11 +21,11 @@ echo "New version: $NEW_VERSION"
 
 # Update version in pyproject.toml
 echo "Updating pyproject.toml version..."
-sed -i "s/version = \".*\"/version = \"$NEW_VERSION\"/" pyproject.toml
+sed -i.bak "s/version = \".*\"/version = \"$NEW_VERSION\"/" pyproject.toml && rm pyproject.toml.bak
 
 # Update version in __init__.py
 echo "Updating __init__.py version..."
-sed -i "s/__version__ = \".*\"/__version__ = \"$NEW_VERSION\"/" parrygg/__init__.py
+sed -i.bak "s/__version__ = \".*\"/__version__ = \"$NEW_VERSION\"/" parrygg/__init__.py && rm parrygg/__init__.py.bak
 
 # Commit the version updates
 echo "Committing version updates..."
